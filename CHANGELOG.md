@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.13.2 (2025-11-03)
+
+### 🩹 Patch
+
+  * ⚡️ Add support for `hidden` parameter for CI variables (!22) by Romain Deville ([`bb2df57`](https://framagit.org/rdeville-public/opentofu/gitlab-repository/-/commit/bb2df57ce0fb0145c415dda205398736c575693d))
+  * ⚡️ Add support for `hidden` parameter for CI variables by Romain Deville ([`81aa659`](https://framagit.org/rdeville-public/opentofu/gitlab-repository/-/commit/81aa659e7a80818212d71a4683a43e74aed883e6)) 🔏
+
+### 🔊 Others
+
+  * 📝 Update README with tf-docs by Romain Deville ([`d35f877`](https://framagit.org/rdeville-public/opentofu/gitlab-repository/-/commit/d35f87740b2855b8c0feca31dbcef32b9a17d01a)) 🔏
+
 ## v0.13.1 (2025-08-27)
 
 ### 🩹 Patch
