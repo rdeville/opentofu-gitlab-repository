@@ -221,10 +221,11 @@ resource "gitlab_project_variable" "this" {
 
   project     = gitlab_project.this.id
   key         = each.key
-  value       = each.value.value
+  value       = sensitive(each.value.value)
   description = each.value.description
 
   environment_scope = each.value.environment_scope
+  hidden            = each.value.hidden
   masked            = each.value.masked
   protected         = each.value.protected
   raw               = each.value.raw
