@@ -942,6 +942,7 @@ variable "access_tokens" {
       description       = string
       name              = optional(string, null)
       environment_scope = optional(string, "*")
+      hidden            = optional(bool, false)
       masked            = optional(bool, false)
       protected         = optional(bool, false)
       raw               = optional(bool, false)
@@ -980,6 +981,9 @@ variable "access_tokens" {
 
       Note: In Community Editions of Gitlab, values other than * will cause
       inconsistent plans.
+    * `hidden`: Boolean, optional, if set to `true`, the value of the variable
+      will be hidden in repository CI variables. The value must meet the
+      hidden requirements. Defaults to `false`.
     * `masked`: Boolean, optional, if set to `true`, the value of the variable
       will be hidden in job logs. The value must meet the masking requirements.
       Defaults to `false`.
@@ -1003,6 +1007,7 @@ variable "variables" {
     value             = string
     description       = string
     environment_scope = optional(string, "*")
+    hidden            = optional(bool, false)
     masked            = optional(bool, false)
     protected         = optional(bool, false)
     raw               = optional(bool, false)
@@ -1020,6 +1025,9 @@ variable "variables" {
 
     Note: In Community Editions of Gitlab, values other than * will cause
     inconsistent plans.
+  * `hidden`: Boolean, optional, if set to `true`, the value of the variable
+    will be hidden in repository CI variables. The value must meet the
+    hidden requirements. Defaults to `false`.
   * `masked`: Boolean, optional, if set to `true`, the value of the variable
     will be hidden in job logs. The value must meet the masking requirements.
     Defaults to `false`.
