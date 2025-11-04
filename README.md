@@ -1402,7 +1402,7 @@ Note: Introduced in GitLab 16.8. Premium and Ultimate only.
   <p style="border-bottom: 1px solid #333333;">Default</p>
 
   ```hcl
-  developer
+  null
   ```
 
   </div>

@@ -272,8 +272,7 @@ variable "settings_ci_restrict_pipeline_cancellation_role" {
   Note: Introduced in GitLab 16.8. Premium and Ultimate only.
   EOM
 
-  nullable = false
-  default  = "developer"
+  default = null
 }
 
 variable "settings_ci_separated_caches" {
