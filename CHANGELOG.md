@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.13.4 (2025-11-04)
+
+### 🩹 Patch
+
+  * 🐛 Change default value for `ci_restrict_pipeline_cancellation_role` to null (!24) by Romain Deville ([`4af9c0a`](https://framagit.org/rdeville-public/opentofu/gitlab-repository/-/commit/4af9c0a1b7f45f2264356d845378b82b0ae67b2c))
+  * 🐛 Change default value for `ci_restrict_pipeline_cancellation_role` to null by Romain Deville ([`015cc3c`](https://framagit.org/rdeville-public/opentofu/gitlab-repository/-/commit/015cc3c4df73551cf646a87d50c1d89263217249)) 🔏
+
+### 🔊 Others
+
+  * 📝 Update README with tf-docs by Romain Deville ([`9a57ba4`](https://framagit.org/rdeville-public/opentofu/gitlab-repository/-/commit/9a57ba41c66fbc9dc4e16b137149484ca1360a1b)) 🔏
+
 ## v0.13.3 (2025-11-04)
 
 ### 🩹 Patch
