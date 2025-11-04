@@ -1,6 +1,18 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.13.3 (2025-11-04)
+
+### 🩹 Patch
+
+  * ⬆️ Bump provider constraint to ~&gt;18.5 by Romain Deville ([`814b618`](https://framagit.org/rdeville-public/opentofu/gitlab-repository/-/commit/814b61829c6cb0023f0b82ad2893d026f0c96ed5)) 🔏
+  * 👽️ Update module due to change in project resource when provider ~&gt;18.5 (!23) by Romain Deville ([`615ed18`](https://framagit.org/rdeville-public/opentofu/gitlab-repository/-/commit/615ed186f5f097088660631c686ed9020a752991))
+  * 👽️ Update module due to change in project resource when provider ~&gt;18.5 by Romain Deville ([`b7b3263`](https://framagit.org/rdeville-public/opentofu/gitlab-repository/-/commit/b7b326376fce574ca06f1613dd53d5dd1608eefa)) 🔏
+
+### 🔊 Others
+
+  * 📝 Update README with tf-docs by Romain Deville ([`ed9614e`](https://framagit.org/rdeville-public/opentofu/gitlab-repository/-/commit/ed9614ed46cd5b8a5d962ed8e2726aa951efaf54)) 🔏
+
 ## v0.13.2 (2025-11-03)
 
 ### 🩹 Patch
