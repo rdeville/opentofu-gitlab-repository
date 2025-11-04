@@ -590,7 +590,7 @@ module "gitlab_repo" {
 * [opentofu](https://opentofu.org/docs/):
   `>= 1.8, < 2.0`
 * [gitlab](https://search.opentofu.org/provider/gitlabhq/gitlab/):
-  `~>18.0`
+  `~>18.5`
 
 ### Resources
 
@@ -684,7 +684,12 @@ string
 * [settings_builds_access_level](#settings_builds_access_level)
 * [settings_ci_config_path](#settings_ci_config_path)
 * [settings_ci_default_git_depth](#settings_ci_default_git_depth)
+* [settings_ci_delete_pipelines_in_seconds](#settings_ci_delete_pipelines_in_seconds)
 * [settings_ci_forward_deployment_enabled](#settings_ci_forward_deployment_enabled)
+* [settings_ci_forward_deployment_rollback_allowed](#settings_ci_forward_deployment_rollback_allowed)
+* [settings_ci_id_token_sub_claim_components](#settings_ci_id_token_sub_claim_components)
+* [settings_ci_pipeline_variables_minimum_override_role](#settings_ci_pipeline_variables_minimum_override_role)
+* [settings_ci_push_repository_for_job_token_allowed](#settings_ci_push_repository_for_job_token_allowed)
 * [settings_ci_restrict_pipeline_cancellation_role](#settings_ci_restrict_pipeline_cancellation_role)
 * [settings_ci_separated_caches](#settings_ci_separated_caches)
 * [settings_container_expiration_policy](#settings_container_expiration_policy)
@@ -709,6 +714,8 @@ string
 * [settings_merge_requests_access_level](#settings_merge_requests_access_level)
 * [settings_merge_requests_template](#settings_merge_requests_template)
 * [settings_merge_trains_enabled](#settings_merge_trains_enabled)
+* [settings_model_experiments_access_level](#settings_model_experiments_access_level)
+* [settings_model_registry_access_level](#settings_model_registry_access_level)
 * [settings_monitor_access_level](#settings_monitor_access_level)
 * [settings_only_allow_merge_if_all_discussions_are_resolved](#settings_only_allow_merge_if_all_discussions_are_resolved)
 * [settings_only_allow_merge_if_pipeline_succeeds](#settings_only_allow_merge_if_pipeline_succeeds)
@@ -723,7 +730,6 @@ string
 * [settings_request_access_enabled](#settings_request_access_enabled)
 * [settings_requirements_access_level](#settings_requirements_access_level)
 * [settings_resolve_outdated_diff_discussions](#settings_resolve_outdated_diff_discussions)
-* [settings_restrict_user_defined_variables](#settings_restrict_user_defined_variables)
 * [settings_security_and_compliance_access_level](#settings_security_and_compliance_access_level)
 * [settings_shared_runners_enabled](#settings_shared_runners_enabled)
 * [settings_skip_wait_for_default_branch_protection](#settings_skip_wait_for_default_branch_protection)
@@ -1218,6 +1224,31 @@ Default number of revisions for shallow cloning.
   </div>
 </details>
 
+##### `settings_ci_delete_pipelines_in_seconds`
+
+Pipelines older than the configured time are deleted.
+
+<details style="width: 100%;display: inline-block">
+  <summary>Type & Default</summary>
+  <div style="height: 1em"></div>
+  <div style="width:64%; float:left;">
+  <p style="border-bottom: 1px solid #333333;">Type</p>
+
+  ```hcl
+  number
+  ```
+
+  </div>
+  <div style="width:34%;float:right;">
+  <p style="border-bottom: 1px solid #333333;">Default</p>
+
+  ```hcl
+  2.592e+06
+  ```
+
+  </div>
+</details>
+
 ##### `settings_ci_forward_deployment_enabled`
 
 When a new deployment job starts, skip older deployment jobs that are still
@@ -1239,6 +1270,111 @@ pending.
 
   ```hcl
   true
+  ```
+
+  </div>
+</details>
+
+##### `settings_ci_forward_deployment_rollback_allowed`
+
+Allow job retries even if the deployment job is outdated.
+
+<details style="width: 100%;display: inline-block">
+  <summary>Type & Default</summary>
+  <div style="height: 1em"></div>
+  <div style="width:64%; float:left;">
+  <p style="border-bottom: 1px solid #333333;">Type</p>
+
+  ```hcl
+  bool
+  ```
+
+  </div>
+  <div style="width:34%;float:right;">
+  <p style="border-bottom: 1px solid #333333;">Default</p>
+
+  ```hcl
+  false
+  ```
+
+  </div>
+</details>
+
+##### `settings_ci_id_token_sub_claim_components`
+
+Fields included in the sub claim of the ID Token. Accepts an array starting
+with project_path. The array might also include ref_type and ref. Defaults to
+["project_path", "ref_type", "ref"]. Introduced in GitLab 17.10.
+
+<details style="width: 100%;display: inline-block">
+  <summary>Type & Default</summary>
+  <div style="height: 1em"></div>
+  <div style="width:64%; float:left;">
+  <p style="border-bottom: 1px solid #333333;">Type</p>
+
+  ```hcl
+  list(string)
+  ```
+
+  </div>
+  <div style="width:34%;float:right;">
+  <p style="border-bottom: 1px solid #333333;">Default</p>
+
+  ```hcl
+  null
+  ```
+
+  </div>
+</details>
+
+##### `settings_ci_pipeline_variables_minimum_override_role`
+
+The minimum role required to set variables when running pipelines and jobs.
+Introduced in GitLab 17.1. Valid values are developer, maintainer, owner,
+no_one_allowed
+
+<details style="width: 100%;display: inline-block">
+  <summary>Type & Default</summary>
+  <div style="height: 1em"></div>
+  <div style="width:64%; float:left;">
+  <p style="border-bottom: 1px solid #333333;">Type</p>
+
+  ```hcl
+  string
+  ```
+
+  </div>
+  <div style="width:34%;float:right;">
+  <p style="border-bottom: 1px solid #333333;">Default</p>
+
+  ```hcl
+  maintainer
+  ```
+
+  </div>
+</details>
+
+##### `settings_ci_push_repository_for_job_token_allowed`
+
+Allow Git push requests to your project repository that are authenticated with
+a CI/CD job token.
+
+<details style="width: 100%;display: inline-block">
+  <summary>Type & Default</summary>
+  <div style="height: 1em"></div>
+  <div style="width:64%; float:left;">
+  <p style="border-bottom: 1px solid #333333;">Type</p>
+
+  ```hcl
+  bool
+  ```
+
+  </div>
+  <div style="width:34%;float:right;">
+  <p style="border-bottom: 1px solid #333333;">Default</p>
+
+  ```hcl
+  false
   ```
 
   </div>
@@ -1266,7 +1402,7 @@ Note: Introduced in GitLab 16.8. Premium and Ultimate only.
   <p style="border-bottom: 1px solid #333333;">Default</p>
 
   ```hcl
-  null
+  developer
   ```
 
   </div>
@@ -1894,6 +2030,58 @@ Requires `settings_merge_pipelines_enabled` to be set to `true` to take effect.
   </div>
 </details>
 
+##### `settings_model_experiments_access_level`
+
+Set visibility of machine learning model experiments. Valid values are
+disabled, private, enabled.
+
+<details style="width: 100%;display: inline-block">
+  <summary>Type & Default</summary>
+  <div style="height: 1em"></div>
+  <div style="width:64%; float:left;">
+  <p style="border-bottom: 1px solid #333333;">Type</p>
+
+  ```hcl
+  string
+  ```
+
+  </div>
+  <div style="width:34%;float:right;">
+  <p style="border-bottom: 1px solid #333333;">Default</p>
+
+  ```hcl
+  disabled
+  ```
+
+  </div>
+</details>
+
+##### `settings_model_registry_access_level`
+
+Set visibility of machine learning model registry. Valid values are disabled,
+private, enabled.
+
+<details style="width: 100%;display: inline-block">
+  <summary>Type & Default</summary>
+  <div style="height: 1em"></div>
+  <div style="width:64%; float:left;">
+  <p style="border-bottom: 1px solid #333333;">Type</p>
+
+  ```hcl
+  string
+  ```
+
+  </div>
+  <div style="width:34%;float:right;">
+  <p style="border-bottom: 1px solid #333333;">Default</p>
+
+  ```hcl
+  disabled
+  ```
+
+  </div>
+</details>
+
 ##### `settings_monitor_access_level`
 
 Set the monitor access level. Valid values are `disabled`, `private`, `enabled`.
@@ -2237,32 +2425,6 @@ Automatically resolve merge request diffs discussions on lines changed with a pu
 
   ```hcl
   false
-  ```
-
-  </div>
-</details>
-
-##### `settings_restrict_user_defined_variables`
-
-Allow only users with the Maintainer role to pass user-defined variables when
-triggering a pipeline.
-
-<details style="width: 100%;display: inline-block">
-  <summary>Type & Default</summary>
-  <div style="height: 1em"></div>
-  <div style="width:64%; float:left;">
-  <p style="border-bottom: 1px solid #333333;">Type</p>
-
-  ```hcl
-  bool
-  ```
-
-  </div>
-  <div style="width:34%;float:right;">
-  <p style="border-bottom: 1px solid #333333;">Default</p>
-
-  ```hcl
-  true
   ```
 
   </div>

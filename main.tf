@@ -23,7 +23,12 @@ resource "gitlab_project" "this" {
   builds_access_level                              = var.settings_builds_access_level
   ci_config_path                                   = var.settings_ci_config_path
   ci_default_git_depth                             = var.settings_ci_default_git_depth
+  ci_delete_pipelines_in_seconds                   = var.settings_ci_delete_pipelines_in_seconds
   ci_forward_deployment_enabled                    = var.settings_ci_forward_deployment_enabled
+  ci_forward_deployment_rollback_allowed           = var.settings_ci_forward_deployment_rollback_allowed
+  ci_id_token_sub_claim_components                 = var.settings_ci_id_token_sub_claim_components
+  ci_push_repository_for_job_token_allowed         = var.settings_ci_push_repository_for_job_token_allowed
+  ci_pipeline_variables_minimum_override_role      = var.settings_ci_pipeline_variables_minimum_override_role
   ci_restrict_pipeline_cancellation_role           = var.settings_ci_restrict_pipeline_cancellation_role
   ci_separated_caches                              = var.settings_ci_separated_caches
   container_registry_access_level                  = var.settings_container_registry_access_level
@@ -47,6 +52,8 @@ resource "gitlab_project" "this" {
   merge_requests_access_level                      = var.settings_merge_requests_access_level
   merge_requests_template                          = var.settings_merge_requests_template
   merge_trains_enabled                             = var.settings_merge_trains_enabled
+  model_experiments_access_level                   = var.settings_model_experiments_access_level
+  model_registry_access_level                      = var.settings_model_registry_access_level
   monitor_access_level                             = var.settings_monitor_access_level
   only_allow_merge_if_all_discussions_are_resolved = var.settings_only_allow_merge_if_all_discussions_are_resolved
   only_allow_merge_if_pipeline_succeeds            = var.settings_only_allow_merge_if_pipeline_succeeds
@@ -61,7 +68,6 @@ resource "gitlab_project" "this" {
   request_access_enabled                           = var.settings_request_access_enabled
   requirements_access_level                        = var.settings_requirements_access_level
   resolve_outdated_diff_discussions                = var.settings_resolve_outdated_diff_discussions
-  restrict_user_defined_variables                  = var.settings_restrict_user_defined_variables
   security_and_compliance_access_level             = var.settings_security_and_compliance_access_level
   shared_runners_enabled                           = var.settings_shared_runners_enabled
   skip_wait_for_default_branch_protection          = var.settings_skip_wait_for_default_branch_protection

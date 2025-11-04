@@ -197,6 +197,16 @@ variable "settings_ci_default_git_depth" {
   default  = 20
 }
 
+variable "settings_ci_delete_pipelines_in_seconds" {
+  type        = number
+  description = <<-EOM
+  Pipelines older than the configured time are deleted.
+  EOM
+
+  nullable = false
+  default  = 30 * 24 * 3600 # 30 days
+}
+
 variable "settings_ci_forward_deployment_enabled" {
   type        = bool
   description = <<-EOM
@@ -208,6 +218,51 @@ variable "settings_ci_forward_deployment_enabled" {
   default  = true
 }
 
+variable "settings_ci_forward_deployment_rollback_allowed" {
+  type        = bool
+  description = <<-EOM
+  Allow job retries even if the deployment job is outdated.
+  EOM
+
+  nullable = false
+  default  = false
+}
+
+variable "settings_ci_id_token_sub_claim_components" {
+  type        = list(string)
+  description = <<-EOM
+  Fields included in the sub claim of the ID Token. Accepts an array starting
+  with project_path. The array might also include ref_type and ref. Defaults to
+  ["project_path", "ref_type", "ref"]. Introduced in GitLab 17.10.
+  EOM
+
+  default = null
+}
+
+variable "settings_ci_pipeline_variables_minimum_override_role" {
+
+  type        = string
+  description = <<-EOM
+  The minimum role required to set variables when running pipelines and jobs.
+  Introduced in GitLab 17.1. Valid values are developer, maintainer, owner,
+  no_one_allowed
+  EOM
+
+  nullable = false
+  default  = "maintainer"
+}
+
+variable "settings_ci_push_repository_for_job_token_allowed" {
+  type        = bool
+  description = <<-EOM
+  Allow Git push requests to your project repository that are authenticated with
+  a CI/CD job token.
+  EOM
+
+  nullable = false
+  default  = false
+}
+
 variable "settings_ci_restrict_pipeline_cancellation_role" {
   type        = string
   description = <<-EOM
@@ -217,7 +272,8 @@ variable "settings_ci_restrict_pipeline_cancellation_role" {
   Note: Introduced in GitLab 16.8. Premium and Ultimate only.
   EOM
 
-  default = null
+  nullable = false
+  default  = "developer"
 }
 
 variable "settings_ci_separated_caches" {
@@ -488,6 +544,28 @@ variable "settings_merge_trains_enabled" {
   default  = false
 }
 
+variable "settings_model_experiments_access_level" {
+  type        = string
+  description = <<-EOM
+  Set visibility of machine learning model experiments. Valid values are
+  disabled, private, enabled.
+  EOM
+
+  nullable = false
+  default  = "disabled"
+}
+
+variable "settings_model_registry_access_level" {
+  type        = string
+  description = <<-EOM
+  Set visibility of machine learning model registry. Valid values are disabled,
+  private, enabled.
+  EOM
+
+  nullable = false
+  default  = "disabled"
+}
+
 variable "settings_monitor_access_level" {
   type        = string
   description = <<-EOM
@@ -619,17 +697,6 @@ variable "settings_resolve_outdated_diff_discussions" {
 
   nullable = false
   default  = false
-}
-
-variable "settings_restrict_user_defined_variables" {
-  type        = bool
-  description = <<-EOM
-  Allow only users with the Maintainer role to pass user-defined variables when
-  triggering a pipeline.
-  EOM
-
-  nullable = false
-  default  = true
 }
 
 variable "settings_security_and_compliance_access_level" {
